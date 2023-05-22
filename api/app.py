@@ -52,6 +52,8 @@ def read_root():
 # Hace overwrite dado a que se le pasa el keyword 'replace' dentro de este método
 # Para no gastar memoria, "cierra" cada archivo cuando no se lee más dentro de la iteración
 # Se tiene un try-except en casos donde lo que se suba no sea un .csv
+# Es eficiente para batch transactions ya que puede subir n cantidad de filas mediante DF, entonces no importa el tamaño del csv original
+# En caso de querer aplicar alguna limitante a la carga de datos por request implicaría manipular el csv que se ingesta en vez de DF
 @app.post('/upload_overwrite')
 def upload(files: List[UploadFile] = File(...)):
     r = []
@@ -76,6 +78,8 @@ def upload(files: List[UploadFile] = File(...)):
 # Hace overwrite dado a que se le pasa el keyword 'append' dentro de este método
 # Para no gastar memoria, "cierra" cada archivo cuando no se lee más dentro de la iteración
 # Se tiene un try-except en casos donde lo que se suba no sea un .csv
+# Es eficiente para batch transactions ya que puede subir n cantidad de filas mediante DF, entonces no importa el tamaño del csv original
+# En caso de querer aplicar alguna limitante a la carga de datos por request implicaría manipular el csv que se ingesta en vez de DF
 @app.post('/upload_append')
 def upload(files: List[UploadFile] = File(...)):
     r = []
@@ -92,6 +96,9 @@ def upload(files: List[UploadFile] = File(...)):
     
     return {'message': r}
     
+
+# TODO: métodos que permitan hacer llamadas a la DB y retornen los dos queries requeridos.
+# Estos se suministran en un archivo aparte, como manera de pseudocódigo.
 
 
 # Main de la aplicación, que empieza el servidor local

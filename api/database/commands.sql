@@ -1,3 +1,5 @@
+-- Todo lo mostrado aquí es pseudocódigo, ya que no se pudo probar a tiempo.
+
 -- ***** Ejercicio 1 *****
 -- Se facilita la ejecución mediante el uso de CTEs
 -- Uno que selecciona cada una de las tres tablas
@@ -34,4 +36,5 @@ GROUP BY d.department, j.job
 ORDER BY d.department, j.job;
 
 
- q
+-- ***** Ejercicio 2 *****
+-- No se comprendieron las instrucciones.
